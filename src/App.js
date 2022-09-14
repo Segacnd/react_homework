@@ -48,7 +48,7 @@ function App() {
 
   const [searchType, setSearchType] = useState('immediately');
 
-  function proverka(e) {
+  function handleSearch(e) {
 
     switch (searchType) {
       case 'immediately': setInputValue(e.target.value); break;
@@ -57,12 +57,10 @@ function App() {
   }
 
   const handleOnChangeSearchType = (e) => {
-    console.log(e.target.value)
     setSearchType(e.target.value)
   };
 
   const keyDown = (event) => {
-    console.log('User pressed: ', event.key);
     if (event.key === 'Enter' && searchType == 'press') {
       setInputValue(event.target.value)
     }
@@ -89,7 +87,7 @@ function App() {
         <NameInput
           type={'text'}
           onKeyDown={keyDown}
-          onChange={proverka}
+          onChange={handleSearch}
         />
         <label >
           <input type='radio' name='searchType' value='immediately' checked onChange={handleOnChangeSearchType} />
